@@ -2,37 +2,48 @@
 
 const bcrypt = require('bcrypt-nodejs');
 const User = require('../../models/user');
+const jwt = require('../../services/jwt');
 
 
 function loginUser(req, res) {
 
-    const params = req.body;
+  const params = req.body;
 
-    const email = params.email;
-    const password = params.password;
+  const email = params.email;
+  const password = params.password;
 
-    User.findOne({ email: email }, (err, user) => {
+  User.findOne({ email: email }, (err, user) => {
 
-        if (err) return res.status(500).send({ message: 'Error en el login de usuario' });
+    if (err) return res.status(500).send({ message: 'Error en el login de usuario' });
 
-        if (user) {
+    if (user) {
 
-            bcrypt.compare(password, user.password, (err, check) => {
+      bcrypt.compare(password, user.password, (err, check) => {
 
-                if (check) {
+        if (check) {
 
-                    return res.status(200).send({ user });
+          if (params.gettoken) {
 
-                } else {
+            return res.status(200).send({
 
-                    return res.status(404).send({ message: 'No se ha podido identificar al usuario' });
-                }
-            });
+              token: jwt.createToken(user)
+            })
+          } else {
+
+            user.password = undefined; //Hago esto para que no me devuelva la password en los datos
+
+            return res.status(200).send({ user });
+          }
         } else {
 
-            return res.status(404).send({ message: 'No se ha podido identificar al usuario' });
+          return res.status(404).send({ message: 'No se ha podido identificar al usuario' });
         }
-    });
+      });
+    } else {
+
+      return res.status(404).send({ message: 'No se ha podido identificar al usuario' });
+    }
+  });
 }
 
 module.exports = loginUser;
