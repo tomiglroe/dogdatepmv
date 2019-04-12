@@ -15,28 +15,42 @@ function registerUser(req, res) {
         user.email = params.email;
         user.image = null;
 
-        bcrypt.hash(params.password, null, null, (err, hash) => {
+        //Controlo usuarios duplicados
 
-            user.password = hash;
+        User.find({ email: user.email.toLowerCase() }).exec((err, users) => {
 
-            user.save((err, userStored) => {
+            if (err) return res.status(500).send({ message: 'Error en el registro de usuario' });
 
-                if (err) return res.status(500).send({ message: 'Error al guardar el usuario' });
+            if (users && users.length >= 1) {
 
-                if (userStored) {
+                return res.status(200).send({ message: 'El email introducido ya existe' });
+            } else {
 
-                    res.status(200).send({ user: userStored });
+                //Cifro password y guardo los datos
+                bcrypt.hash(params.password, null, null, (err, hash) => {
 
-                } else {
+                    user.password = hash;
 
-                    res.status(404).send({ message: 'No se ha registrado el usuario' });
-                }
-            });
+                    user.save((err, userStored) => {
+
+                        if (err) return res.status(500).send({ message: 'Error al guardar el usuario' });
+
+                        if (userStored) {
+
+                            res.status(200).send({ user: userStored });
+
+                        } else {
+
+                            res.status(404).send({ message: 'No se ha registrado el usuario' });
+                        }
+                    });
+                });
+            }
         });
+
     } else {
 
         res.status(200).send({ message: 'Tienes que cubrir todos los campos' });
-
     }
 }
 
