@@ -24,10 +24,8 @@ function loginUser(req, res) {
 
           if (params.gettoken) {
 
-            return res.status(200).send({
+            return res.status(200).send({ token: jwt.createToken(user) });
 
-              token: jwt.createToken(user)
-            })
           } else {
 
             user.password = undefined; //Hago esto para que no me devuelva la password en los datos

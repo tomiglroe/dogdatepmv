@@ -4,7 +4,7 @@ const jwt = require('jwt-simple');
 const moment = require('moment');
 const secret = 'clave_secreta_dogname_proyecto';
 
-exports.createToken = function (user) {
+function createToken (user) {
     
     let payload = {
 
@@ -16,5 +16,10 @@ exports.createToken = function (user) {
         exp: moment().add(2, 'days').unix
     };
 
-    return jwt.encode(payload, secret)
-};
+    console.log(payload);
+    
+
+    return jwt.encode(payload, secret, 'HS512');
+}
+
+module.exports = { createToken }
