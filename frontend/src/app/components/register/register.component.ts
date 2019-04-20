@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
+  providers: [UserService],
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
@@ -15,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
 
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _userService: UserService
   ) {
 
     this.title = 'Registra a tu perro';
@@ -35,7 +38,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.user);
+    this._userService.register(this.user);
     
   }
 
