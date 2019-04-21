@@ -57,9 +57,11 @@ export class LoginComponent implements OnInit {
           this.status = 'error';
 
         } else {
-
+          
           this.status = 'success';
-          //guardar en localstorage
+          
+          //Guardo datos en el LocalStorage como string porque no admite objetos
+          localStorage.setItem('identity', JSON.stringify(this.identity));
 
           this.getToken();
 
@@ -93,8 +95,9 @@ export class LoginComponent implements OnInit {
         } else {
 
           this.status = 'success';
-          //guardar en localstorage
-
+          
+          //Guardo en localstorage
+          localStorage.setItem('token', this.token);
         }
       },
       error => {
