@@ -15,10 +15,11 @@ export class UserService {
         this.url = GLOBAL.url;
     }
 
-    register (user_to_register) {
+    register (user: User): Observable<any> {
         
-        console.log(user_to_register);
-        console.log(this.url);
-        
+        const params = JSON.stringify(user);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        return this._http.post(this.url + 'register', params, {headers: headers});
     }
 }
