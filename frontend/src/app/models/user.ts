@@ -6,6 +6,7 @@ export class User {
     public dogname: string,
     public email: string,
     public password: string,
-    public image: string
-  ) { }
+    public image: string,
+    public gettoken: any
+  ) {}
 }
