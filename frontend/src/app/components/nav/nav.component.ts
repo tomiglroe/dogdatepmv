@@ -1,4 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+import { Route, ActivatedRoute, Params, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,7 +16,9 @@ export class NavComponent implements OnInit, DoCheck {
 
   constructor (
 
-    private _userService: UserService
+    private _userService: UserService,
+    private _router: Router,
+    private _route: ActivatedRoute
 
   ) {}
 
@@ -29,4 +32,9 @@ export class NavComponent implements OnInit, DoCheck {
     this.identity = this._userService.getIdentity();
   }
 
+  logout() {
+
+    localStorage.clear();
+    this.identity = null;
+  }
 }

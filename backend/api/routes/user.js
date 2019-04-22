@@ -9,6 +9,7 @@ const registerUser = require('../controllers/user/register');
 const loginUser = require('../controllers/user/login');
 const getUser = require('../controllers/user/getuser');
 const getUsers = require('../controllers/user/getUsers');
+const updateUser = require('../controllers/user/updateUser');
 
 const api = express.Router();
 const md_auth = require('../middlewares/authenticated');
@@ -21,5 +22,6 @@ api.post('/register', registerUser);
 api.post('/login', loginUser);
 api.get('/user/:id', md_auth.ensureAuth, getUser);
 api.get('/users/:page', md_auth.ensureAuth, getUsers);
+api.put('/update-user/:id', md_auth.ensureAuth, updateUser);
 
 module.exports = api;
