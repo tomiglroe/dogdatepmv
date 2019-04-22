@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
       "",
       "",
       "",
-      "",
       ""
     )
   }
@@ -57,10 +56,7 @@ export class RegisterComponent implements OnInit {
       error => {
 
         console.log(<any>error);
-        
       }
     );
-    
   }
-
 }

@@ -25,7 +25,7 @@ export class UserService {
         return this._http.post(this.url + 'register', params, { headers: headers });
     }
 
-    login(user: User, gettoken = null): Observable<any> {
+    login(user, gettoken = null): Observable<any> {
 
         if (gettoken != null) {
 
