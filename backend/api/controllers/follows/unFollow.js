@@ -1,8 +1,5 @@
 'use strict';
 
-const mongoosePaginate = require('mongoose-pagination');
-
-const User = require('../../models/user');
 const Follow = require('../../models/follow');
 
 function unFollow (req, res) {
