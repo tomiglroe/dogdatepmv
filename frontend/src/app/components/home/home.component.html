@@ -1,9 +1,10 @@
-
 <main class="col-md-12">
-	
-    <section class="jumbotron">
-      <h1>{{title}}</h1>
-      <p>Localiza a los amigos peludos de tu perro para saber si están paseando por tu zona</p>
+
+  <section class="jumbotron">
+    <h1>{{title}}</h1>
+    <p>Localiza a los amigos peludos de tu perro para saber si están paseando por tu zona</p>
+
+    <div class="container" *ngIf="identity">
       <p class="buttons">
         <button routerLink="perfil" class="btn btn-outline-primary">
           Perfil
@@ -15,6 +16,10 @@
           Perros
         </button>
       </p>
-    </section>
-  
-  </main>
+    </div>
+
+    <div class='imageHome' *ngIf="!identity">
+      <img src="../../../assets/images/cover_dogdate.png" alt="dogdate">
+    </div>
+  </section>
+</main>

@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [UserService]
 })
 
 export class HomeComponent implements OnInit {
 
   title: string;
+  public identity;
 
-  constructor() {
+  constructor(
+
+    private _userService: UserService,
+  ) {
 
     this.title = 'Bienvenido a DogDate'
   }
@@ -18,7 +25,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     console.log('home.component cargado');
-    
+    this.identity = this._userService.getIdentity();
   }
 
+  ngDoCheck() {
+
+    this.identity = this._userService.getIdentity();
+  }
 }
