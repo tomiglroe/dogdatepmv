@@ -22,8 +22,9 @@
 						</a>
 					
 					<!--Aquí pongo botones de Seguir o Dejar de seguir-->
-					<div>
-						<button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0">
+					<div class="pull-right">
+						<button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0"
+						(click)="followUser(user._id)">
 							<i class="fas fa-plus-circle">
 								Seguir
 							</i>

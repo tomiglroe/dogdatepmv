@@ -1,17 +1,19 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
+import { Follow } from '../../models/follow';
 import { UserService } from '../../services/user.service';
 import { GLOBAL } from '../../services/global';
+import { FollowService } from '../../services/follow.service';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
-  providers: [UserService]
+  providers: [UserService, FollowService]
 })
 
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, DoCheck {
 
   title: string;
   url: string;
@@ -30,14 +32,15 @@ export class UsersComponent implements OnInit {
 
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private _followService: FollowService
   ) {
 
     this.title = 'Perros';
     this.url = GLOBAL.url;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-   }
+  }
 
   ngOnInit() {
 
@@ -45,11 +48,10 @@ export class UsersComponent implements OnInit {
     this.actualPage();
   }
 
-  // ngDoCheck() {
+  ngDoCheck() {
 
-  //   this.identity = this._userService.getIdentity;
-
-  // }
+    this.identity = this._userService.getIdentity;
+  }
 
   actualPage() {
 
@@ -72,7 +74,7 @@ export class UsersComponent implements OnInit {
         this.next_page = page + 1;
         this.prev_page = page - 1;
 
-        if (this.prev_page <=0) {
+        if (this.prev_page <= 0) {
 
           this.prev_page = 1;
         }
@@ -87,7 +89,7 @@ export class UsersComponent implements OnInit {
 
       response => {
 
-        if(!response.users) {
+        if (!response.users) {
 
           this.status = 'error';
 
@@ -107,7 +109,7 @@ export class UsersComponent implements OnInit {
 
         let errorMessage = <any>error;
         console.log(errorMessage);
-        
+
         if (errorMessage != null) {
 
           this.status = 'error';
@@ -118,11 +120,42 @@ export class UsersComponent implements OnInit {
 
   followUserOver;
 
-  mouseEnter (user_id) {
+  mouseEnter(user_id) {
     this.followUserOver = user_id;
   }
 
-  mouseLeave (user_id) {
+  mouseLeave(user_id) {
     this.followUserOver = 0;
+  }
+
+  followUser(followed) {
+
+    let follow = new Follow('', this.identity._id, followed);
+
+    this._followService.addFollow(this.token, follow).subscribe(
+
+      response => {
+
+        if (!response.follow) {
+
+          this.status = 'error';
+
+        } else {
+
+          this.status = 'success';
+          this.follows.push(followed);
+        }
+      },
+      error => {
+
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if (errorMessage != null) {
+
+          this.status = 'error';
+        }
+      }
+    );
   }
 }
