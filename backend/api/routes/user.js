@@ -10,6 +10,7 @@ const loginUser = require('../controllers/user/login');
 const getUser = require('../controllers/user/getuser');
 const getUsers = require('../controllers/user/getUsers');
 const updateUser = require('../controllers/user/updateUser');
+const getCounters = require('../controllers/user/getCounters');
 
 const api = express.Router();
 const md_auth = require('../middlewares/authenticated');
@@ -23,5 +24,6 @@ api.post('/login', loginUser);
 api.get('/user/:id', md_auth.ensureAuth, getUser);
 api.get('/users/:page', md_auth.ensureAuth, getUsers);
 api.put('/update-user/:id', md_auth.ensureAuth, updateUser);
+api.get('/counters/:id?', md_auth.ensureAuth, getCounters);
 
 module.exports = api;

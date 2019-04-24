@@ -1,8 +1,9 @@
 'use strict';
 
+//Listado de usuarios que me siguen paginado
+
 const mongoosePaginate = require('mongoose-pagination');
 const Follow = require('../../models/follow');
-
 
 function getFollowedUsers (req, res) {
 
