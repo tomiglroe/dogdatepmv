@@ -1,0 +1,48 @@
+.list-group-item {
+  margin-bottom: 1rem;
+}
+
+.image-user {
+  display: inline;
+  margin-right: 10px;
+  width: 75px;
+  height: 75px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.image-user img {
+  width: 120px;
+}
+
+.pull-right {
+  display: inline;
+  text-align: right;
+}
+
+.ficha {
+  display: flex;
+  flex-direction: row;
+}
+
+.dogname {
+  font-weight: bold;
+  color: black;
+  font-size: 2rem;
+}
+
+.user-perro {
+  width: 100%;
+}
+
+button {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+button a {
+  display: inline;
+  color: goldenrod;
+  font-weight: bold;
+  text-decoration: none;
+}

@@ -1,0 +1,62 @@
+<div class="col-lg-8">
+	<h1 class="h1-strong">{{ title }}</h1>
+
+	<div class="people">
+
+		<!--Listado de los usuarios-->
+		<div *ngFor="let user of users" class="item-user">
+
+			<ul class="list-group">
+
+				<li class="ficha" class="list-group-item list-group-item-secondary">
+					
+						<div class="image-user">
+							<a href="#">
+								<!--<img src="{{ url + 'get-image-user' + user }}" *ngIf="user.image" />-->
+								<img src="assets/user-perro.png" class="user-perro" />
+								<!--*ngIf="!user.image" />-->
+							</a>
+						</div>
+						<a class="dogname" href="#">
+							{{ user.dogname }}
+						</a>
+					
+					<!--Aquí pongo botones de Seguir o Dejar de seguir-->
+					<div>
+						<button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0">
+							<i class="fas fa-plus-circle">
+								Seguir
+							</i>
+						</button>
+						<button class="btn btn-primary" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)"
+							(mouseleave)="mouseLeave(user._id)" [class.btn-danger]="user._id == followUserOver">
+							<span *ngIf="user._id == followUserOver; else following">
+								<i class="fas fa-minus-circle">
+									No Seguir
+								</i>
+							</span>
+							<ng-template #following>
+								<i class="fas fa-eye">
+									Siguiendo
+								</i>
+							</ng-template>
+						</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--Aquí hago la paginación-->
+		<ul class="pagination justify-content-center">
+			<li *ngIf="page > 1">
+				<button type="button" class="btn btn-outline-dark">
+					<a [routerLink]="['/perros/', prev_page]">Anterior</a>
+				</button>
+			</li>
+			<li *ngIf="pages != page">
+				<button type="button" class="btn btn-outline-dark">
+					<a [routerLink]="['/perros/' + next_page]">Siguiente</a>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
