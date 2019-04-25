@@ -50,7 +50,7 @@ export class UsersComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
 
-    this.identity = this._userService.getIdentity;
+    this.identity = this._userService.getIdentity();
   }
 
   actualPage() {
@@ -145,6 +145,32 @@ export class UsersComponent implements OnInit, DoCheck {
           this.status = 'success';
           this.follows.push(followed);
         }
+      },
+      error => {
+
+        let errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if (errorMessage != null) {
+
+          this.status = 'error';
+        }
+      }
+    );
+  }
+  unFollowUser(followed) {
+
+    this._followService.deleteFollow(this.token, followed).subscribe(
+
+      response => {
+
+        let searchFollow = this.follows.indexOf(followed);
+        
+        if (searchFollow != -1) {
+
+          this.follows.splice(searchFollow, 1);
+        }
+
       },
       error => {
 

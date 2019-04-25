@@ -22,15 +22,18 @@
 						</a>
 					
 					<!--Aquí pongo botones de Seguir o Dejar de seguir-->
-					<div class="pull-right">
+					<div *ngIf="user._id != identity._id">
 						<button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0"
 						(click)="followUser(user._id)">
 							<i class="fas fa-plus-circle">
 								Seguir
 							</i>
 						</button>
-						<button class="btn btn-primary" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)"
-							(mouseleave)="mouseLeave(user._id)" [class.btn-danger]="user._id == followUserOver">
+						<button class="btn btn-primary" *ngIf="follows.indexOf(user._id) >= 0"
+							(mouseenter)="mouseEnter(user._id)"
+							(mouseleave)="mouseLeave(user._id)"
+							(click)="unFollowUser(user._id)"
+							[class.btn-danger]="user._id == followUserOver">
 							<span *ngIf="user._id == followUserOver; else following">
 								<i class="fas fa-minus-circle">
 									No Seguir
