@@ -23,7 +23,19 @@
     <button class="btn btn-danger" *ngIf="following" (click)="unFollowUser(user._id)">
       No seguir
     </button>
+    <div class="card-body">
+      <button type="button" class="btn btn-outline-success">
+        <i class="fas fa-redo-alt"></i>
+        <a class="verde" class="card-link"> {{ stats.following }}</a>
+      </button>
+      <button type="button" class="btn btn-outline-danger">
+        <i class="fas fa-undo-alt"></i>
+        <a class="rojo" class="card-link"> {{ stats.followed }}</a>
+      </button>
+    </div>
   </div>
+
+
   <app-sidebar></app-sidebar>
 
 </div>

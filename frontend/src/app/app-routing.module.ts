@@ -8,17 +8,17 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
-
+import { UserGuard } from './services/user.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegisterComponent},
-  {path: 'mis-datos', component: UserEditComponent},
-  {path: 'perros', component: UsersComponent},
-  {path: 'perros/:page', component: UsersComponent},
-  {path: 'perfil/:id', component: ProfileComponent},
+  {path: 'mis-datos', component: UserEditComponent, canActivate: [UserGuard]},
+  {path: 'perros', component: UsersComponent, canActivate: [UserGuard]},
+  {path: 'perros/:page', component: UsersComponent, canActivate: [UserGuard]},
+  {path: 'perfil/:id', component: ProfileComponent, canActivate: [UserGuard]},
   {path: '**', component: HomeComponent}
 ];
 

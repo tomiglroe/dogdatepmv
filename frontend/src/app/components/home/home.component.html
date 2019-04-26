@@ -6,7 +6,7 @@
 
     <div class="container" *ngIf="identity">
       <p class="buttons">
-        <button routerLink="perfil" class="btn btn-outline-primary">
+        <button [routerLink]="['/perfil', identity._id]" class="btn btn-outline-primary">
           Perfil
         </button>
         <button routerLink="muro" class="btn btn-outline-success">

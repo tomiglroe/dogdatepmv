@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 })
 export class NavComponent implements OnInit, DoCheck {
 
-  public title = 'dOGdATE';
+  public title = 'DogDate';
   public identity;
 
   constructor (
