@@ -1,3 +1,13 @@
-<p>
-  sidebar works!
-</p>
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url + 'get-image-user/' + identity.image }}" *ngIf="identity.image" alt="Foto de perfil">
+    <img class="card-img-top" src="assets/images/user-perro.png" *ngIf="!identity.image" alt="Foto de perfil">
+    <div class="card-body">
+      <h5 class="card-title">{{ identity.dogname.toUpperCase() }}</h5>
+      <p class="card-text">Usuario registrado Dogdate</p>
+    </div>
+ 
+    <div class="card-body">
+      <a href="#" class="card-link">Sigo </a>
+      <a href="#" class="card-link">Me siguen</a>
+    </div>
+  </div>

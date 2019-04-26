@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
           //Guardo en localstorage
           localStorage.setItem('token', this.token);
 
-          this._router.navigate(['/']);
+          this.getCounters();
         }
       },
       error => {
@@ -110,5 +110,22 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  getCounters() {
+
+    this._userService.getCounters().subscribe(
+
+      response => {
+
+        console.log(response);
+        this._router.navigate(['/']);
+      },
+      error => {
+
+        console.log(<any>error);
+        
+      }
+    )
   }
 }

@@ -46,3 +46,12 @@ button a {
   font-weight: bold;
   text-decoration: none;
 }
+
+.people {
+  display: flex;
+}
+
+.perros {
+  display: flex;
+  flex-wrap: wrap;
+}

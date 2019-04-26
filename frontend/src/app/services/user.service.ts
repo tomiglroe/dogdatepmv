@@ -8,9 +8,10 @@ import { User } from '../models/user';
 
 export class UserService {
 
-    public url: string;
-    public identity;
-    public token;
+    url: string;
+    identity;
+    token;
+    stats;
 
     constructor(public _http: HttpClient) {
 
@@ -70,28 +71,59 @@ export class UserService {
         return this.token;
     }
 
-    updateUser (user: User):Observable<any> {
+    getStats() {
 
-        let params = JSON.stringify(user);
-        let headers = new HttpHeaders()
+        let stats = JSON.parse(localStorage.getItem('stats'));
+
+        if (stats != 'undefined') {
+
+            this.stats = stats;
+
+        } else {
+
+            this.stats = null;
+        }
+
+        return this.stats;
+    }
+
+    getCounters(userId = null): Observable<any> {
+
+        const headers = new HttpHeaders().set('Content-Type', 'application/json')
+            .set('Authorization', this.getToken());
+
+        if (userId != null) {
+
+            return this._http.get(this.url + 'counters/' + userId, {headers: headers});
+
+        } else {
+
+            return this._http.get(this.url + 'counters/', {headers: headers});
+        }
+    }
+
+    updateUser(user: User): Observable<any> {
+
+        const params = JSON.stringify(user);
+        const headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Authorization', this.getToken());
 
-        return this._http.put(this.url + 'update-user/' + user._id, params, {headers: headers});
+        return this._http.put(this.url + 'update-user/' + user._id, params, { headers: headers });
     }
 
-    getUser (id):Observable<any> {
+    getUser(id): Observable<any> {
 
-        let headers = new HttpHeaders()
+        const headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Authorization', this.getToken());
 
         return this._http.get(this.url + 'user/' + id, { headers: headers });
     }
 
-    getUsers (page = null):Observable<any> {
+    getUsers(page = null): Observable<any> {
 
-        let headers = new HttpHeaders()
+        const headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Authorization', this.getToken());
 
