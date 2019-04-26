@@ -1,3 +1,29 @@
-<p>
-  profile works!
-</p>
+<header class="col-lg-8">
+  <h1>{{ title }}</h1>
+  <h1 class="h1-strong" *ngIf="user && user.dogname">
+    {{ user.dogname.toUpperCase() }}
+  </h1>
+</header>
+
+<div>
+
+  <div id="data-profile" *ngIf="user">
+    <div class="avatar pull-left">
+      <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" />
+      <img src="assets/images/user-perro.png" *ngIf="!user.image" />
+    </div>
+    <div class="follow pull-left">
+      <button type="button" class="btn btn-secondary" *ngIf="following">
+        Te sigue
+      </button>
+    </div>
+    <button class="btn btn-success" *ngIf="!following" (click)="followUser(user._id)">
+      Seguir
+    </button>
+    <button class="btn btn-danger" *ngIf="following" (click)="unFollowUser(user._id)">
+      No seguir
+    </button>
+  </div>
+  <app-sidebar></app-sidebar>
+
+</div>

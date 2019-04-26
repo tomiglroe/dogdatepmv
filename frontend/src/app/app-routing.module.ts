@@ -6,6 +6,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersComponent } from './components/users/users.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 const routes: Routes = [
@@ -16,6 +18,7 @@ const routes: Routes = [
   {path: 'mis-datos', component: UserEditComponent},
   {path: 'perros', component: UsersComponent},
   {path: 'perros/:page', component: UsersComponent},
+  {path: 'perfil/:id', component: ProfileComponent},
   {path: '**', component: HomeComponent}
 ];
 

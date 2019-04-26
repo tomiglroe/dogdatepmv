@@ -14,11 +14,11 @@
 						<div class="image-user">
 							<a href="#">
 								<!--<img src="{{ url + 'get-image-user' + user }}" *ngIf="user.image" />-->
-								<img src="assets/user-perro.png" class="user-perro" />
+								<img src="../../../assets/images/user-perro.png" class="user-perro" />
 								<!--*ngIf="!user.image" />-->
 							</a>
 						</div>
-						<a class="dogname" href="#">
+						<a class="dogname" [routerLink]="['/perfil', user._id]">
 							{{ user.dogname }}
 						</a>
 					

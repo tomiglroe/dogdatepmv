@@ -36,5 +36,6 @@ export class NavComponent implements OnInit, DoCheck {
 
     localStorage.clear();
     this.identity = null;
+    this._router.navigate(['/']);
   }
 }
