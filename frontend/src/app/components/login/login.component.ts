@@ -56,9 +56,6 @@ export class LoginComponent implements OnInit {
           this.status = 'error';
 
         } else {
-          
-          this.status = 'success';
-          
           //Guardo datos en el LocalStorage como string porque no admite objetos
           localStorage.setItem('identity', JSON.stringify(this.identity));
 
@@ -92,9 +89,6 @@ export class LoginComponent implements OnInit {
           this.status = 'error';
 
         } else {
-
-          this.status = 'success';
-          
           //Guardo en localstorage
           localStorage.setItem('token', this.token);
 
@@ -118,7 +112,8 @@ export class LoginComponent implements OnInit {
 
       response => {
 
-        console.log(response);
+        localStorage.setItem('stats', JSON.stringify(response));
+        this.status = 'success';
         this._router.navigate(['/']);
       },
       error => {
