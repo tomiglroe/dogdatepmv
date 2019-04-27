@@ -44,13 +44,12 @@ export class UsersComponent implements OnInit, DoCheck {
 
   ngOnInit() {
 
-    console.log('users.componente ha sido cargado');
     this.actualPage();
   }
 
   ngDoCheck() {
 
-    this.identity = this._userService.getIdentity();
+  //  this.identity = this._userService.getIdentity();
   }
 
   actualPage() {

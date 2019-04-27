@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit, DoCheck {
 
   ngOnInit() {
 
-    console.log('profile.component cargado correctamente');
     this.loadPage();
   }
 

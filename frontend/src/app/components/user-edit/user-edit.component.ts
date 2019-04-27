@@ -31,14 +31,10 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.user);
-    
-    console.log('user-edit.component se ha cargado');
   }
 
   onSubmit() {
 
-    console.log(this.user);
     this._userService.updateUser(this.user).subscribe(
 
       response => {
