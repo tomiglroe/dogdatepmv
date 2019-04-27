@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { UserService } from './services/user.service';
 import { UserGuard } from './services/user.guard';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserGuard } from './services/user.guard';
     UserEditComponent,
     UsersComponent,
     SidebarComponent,
-    ProfileComponent
+    ProfileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
