@@ -24,12 +24,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('home.component cargado');
-    this.identity = this._userService.getIdentity();
   }
 
   ngDoCheck() {
 
-    this.identity = this._userService.getIdentity();
+   this.identity = this._userService.getIdentity();
   }
 }

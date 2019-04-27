@@ -1,25 +1,33 @@
-<main class="col-md-12">
+<div class="container">
+  <header class="col-md-12">
 
-  <section class="jumbotron">
-    <h1>{{title}}</h1>
-    <p>Localiza a los amigos peludos de tu perro para saber si están paseando por tu zona</p>
+    <section class="jumbotron">
+      <h1>{{title}}</h1>
+      <p>Localiza a los amigos peludos de tu perro para saber si están paseando por tu zona</p>
 
-    <div class="container" *ngIf="identity">
-      <p class="buttons">
-        <button [routerLink]="['/perfil', identity._id]" class="btn btn-outline-primary">
-          Perfil
-        </button>
-        <button routerLink="muro" class="btn btn-outline-success">
-          Muro
-        </button>
-        <button routerLink="perros" class="btn btn-outline-danger" routerLink='/perros' routerLinkActive='active'>
-          Perros
-        </button>
-      </p>
-    </div>
+      <div class="container" *ngIf="identity">
+        <p class="buttons">
+          <button [routerLink]="['/perfil', identity._id]" class="btn btn-outline-primary">
+            Perfil
+          </button>
+          <button routerLink="muro" class="btn btn-outline-success">
+            Muro
+          </button>
+          <button routerLink="perros" class="btn btn-outline-danger" routerLink='/perros' routerLinkActive='active'>
+            Perros
+          </button>
+        </p>
+      </div>
 
-    <div class='imageHome' *ngIf="!identity">
-      <img src="../../../assets/images/cover_dogdate.png" alt="dogdate">
-    </div>
-  </section>
-</main>
+      <div class='imageHome' *ngIf="!identity">
+        <img src="../../../assets/images/cover_dogdate.png" alt="dogdate">
+      </div>
+    </section>
+  </header>
+
+  <body class="col-md-12" *ngIf="identity">
+    <h2>
+      Geolocaliza otros perros para jugar:
+    </h2>
+    <img class='imageHomeLogin' src="../../../assets/images/perros-portada-geo.png" alt="Geolocaliza otros perros">
+  </body>
