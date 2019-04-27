@@ -81,7 +81,7 @@ async function followUserIds(user_id) {
 
         following: following,
         followed: followed
-    };
+    }
 }
 
 module.exports = getUsers;

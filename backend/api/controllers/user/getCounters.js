@@ -19,16 +19,15 @@ async function getCountFollow(user_id) {
 
   let following = await Follow.countDocuments({ user: user_id })
     .exec()
-    .then((count) => {
-      console.log(count);
-      return count;
+    .then((countDocuments) => {
+      return countDocuments;
     })
     .catch((err) => { return handleError(err); });
 
   let followed = await Follow.countDocuments({ followed: user_id })
     .exec()
-    .then((count) => {
-      return count;
+    .then((countDocuments) => {
+      return countDocuments;
     })
     .catch((err) => { return handleError(err); });
 
