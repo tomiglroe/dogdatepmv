@@ -1,6 +1,7 @@
 'use strict';
 
 const Follow = require('../../models/follow');
+const Publication = require('../../models/publication');
 
 function getCounters(req, res) {
 
@@ -31,7 +32,14 @@ async function getCountFollow(user_id) {
     })
     .catch((err) => { return handleError(err); });
 
-  return { following: following, followed: followed }
+  let publications = await Publication.countDocuments({ user: user_id })
+    .exec()
+    .then((countDocuments) => {
+      return countDocuments;
+    })
+    .catch((err) => { return handleError(err); });
+
+  return { following: following, followed: followed, publication: publications }
 }
 
 module.exports = getCounters;

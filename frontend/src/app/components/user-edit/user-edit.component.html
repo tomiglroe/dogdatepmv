@@ -11,7 +11,8 @@
 
   <p>Estos son tus datos actuales, modifica los que quieras actualizar:</p>
 
-  <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+   <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+    
     <p>
       <label>Nombre del perro:</label>
       <input type="text" name="dogname" #dogname="ngModel" [(ngModel)]="user.dogname" required class="form-control" />
@@ -38,6 +39,6 @@
     </p>
 
     <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!userEditForm.form.valid" />
-  </form>
+  </form> 
 
 </div>
