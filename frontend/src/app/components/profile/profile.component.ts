@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit, DoCheck {
     private _followService: FollowService
   ) {
 
-    this.title = 'Datos de la cuenta ';
+    this.title = 'Perfil de:';
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;

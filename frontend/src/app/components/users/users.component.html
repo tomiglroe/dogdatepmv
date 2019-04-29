@@ -1,39 +1,41 @@
-<div>
 	<h1 class="h1-strong">{{ title }}</h1>
 
-	<div class="people">
-		<div class="perros">
+	<!--Listado de los usuarios-->
+	<div *ngFor="let user of users" class="item-user">
 
-		<!--Listado de los usuarios-->
-		<div *ngFor="let user of users" class="item-user">
+		<ul class="col col-md-8 list-group">
 
-			<ul class="list-group">
+			<li class="list-group-item list-group-item-secondary" *ngIf="user._id != identity._id">
 
-				<li class="ficha" class="list-group-item list-group-item-secondary">
-					
+				<div class="profile-follow">
+
+					<div class="img-name" [routerLink]="['/perfil', user._id]">
+
+						<!--Imagen de usuario o imagen por defecto-->
 						<div class="image-user">
-							<a href="#">
-								<!--<img src="{{ url + 'get-image-user' + user }}" *ngIf="user.image" />-->
-								<img src="../../../assets/images/user-perro.png" class="user-perro" />
-								<!--*ngIf="!user.image" />-->
-							</a>
+							<!--<img src="{{ url + 'get-image-user' + user }}" *ngIf="user.image" />-->
+							<img src="../../../assets/images/user-perro.png" class="user-perro" />
+							<!--*ngIf="!user.image" />-->
 						</div>
-						<a class="dogname" [routerLink]="['/perfil', user._id]">
-							{{ user.dogname }}
+
+						<!--Nombre de usuario-->
+						<a class="dogname">
+							{{ user.dogname.toUpperCase() }}
 						</a>
-					
-					<!--Aquí pongo botones de Seguir o Dejar de seguir-->
+
+					</div>
+
+					<!--Botones de Seguir o Dejar de seguir-->
 					<div *ngIf="user._id != identity._id">
-						<button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0"
-						(click)="followUser(user._id)">
+
+						<button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0" (click)="followUser(user._id)">
 							<i class="fas fa-plus-circle">
 								Seguir
 							</i>
 						</button>
-						<button class="btn btn-primary" *ngIf="follows.indexOf(user._id) >= 0"
-							(mouseenter)="mouseEnter(user._id)"
-							(mouseleave)="mouseLeave(user._id)"
-							(click)="unFollowUser(user._id)"
+
+						<button class="btn btn-primary" *ngIf="follows.indexOf(user._id) >= 0" (mouseenter)="mouseEnter(user._id)"
+							(mouseleave)="mouseLeave(user._id)" (click)="unFollowUser(user._id)"
 							[class.btn-danger]="user._id == followUserOver">
 							<span *ngIf="user._id == followUserOver; else following">
 								<i class="fas fa-minus-circle">
@@ -47,13 +49,16 @@
 							</ng-template>
 						</button>
 					</div>
-				</li>
-			</ul>
-		</div>
+				</div>
+
+			</li>
+
+		</ul>
+
 	</div>
-		<app-sidebar></app-sidebar>
-</div>
-<div>
+
+	<div>
+
 		<!--Aquí hago la paginación-->
 		<ul class="pagination justify-content-center">
 			<li *ngIf="page > 1">
@@ -68,4 +73,3 @@
 			</li>
 		</ul>
 	</div>
-</div>

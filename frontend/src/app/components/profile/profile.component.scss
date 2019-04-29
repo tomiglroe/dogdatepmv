@@ -1,0 +1,41 @@
+#data-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+img {
+  margin-right: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.btn-outline-success {
+  margin-right: 1.5rem;
+}
+
+.btn-secondary {
+  font-size: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-justify: auto;
+  width: 30%;
+  height: 70%;
+}
+
+.seguimiento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

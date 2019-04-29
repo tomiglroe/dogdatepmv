@@ -1,41 +1,45 @@
-<header class="col-lg-8">
-  <h1>{{ title }}</h1>
-  <h1 class="h1-strong" *ngIf="user && user.dogname">
-    {{ user.dogname.toUpperCase() }}
-  </h1>
+<header class="col-lg-12">
+    <h1 class="h1-strong" *ngIf="user && user.dogname">
+        {{ title }} {{ user.dogname.toUpperCase() }}
+    </h1>
 </header>
 
-<div>
+<!--DATA PROFILE-->
+<div class="col-lg-12" id="data-profile" *ngIf="user">
 
-  <div id="data-profile" *ngIf="user">
-    <div class="avatar pull-left">
-      <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" />
-      <img src="assets/images/user-perro.png" *ngIf="!user.image" />
-    </div>
-    <div class="follow pull-left">
-      <button type="button" class="btn btn-secondary" *ngIf="following">
-        Te sigue
-      </button>
-    </div>
-    <button class="btn btn-success" *ngIf="!following" (click)="followUser(user._id)">
-      Seguir
-    </button>
-    <button class="btn btn-danger" *ngIf="following" (click)="unFollowUser(user._id)">
-      No seguir
-    </button>
-    <div class="card-body">
-      <button type="button" class="btn btn-outline-success">
-        <i class="fas fa-redo-alt"></i>
-        <a class="verde" class="card-link"> {{ stats.following }}</a>
-      </button>
-      <button type="button" class="btn btn-outline-danger">
-        <i class="fas fa-undo-alt"></i>
-        <a class="rojo" class="card-link"> {{ stats.followed }}</a>
-      </button>
-    </div>
-  </div>
+    <div class="col-lg-2 avatar">
+        <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" />
+        <img src="assets/images/user-perro.png" *ngIf="!user.image" />
 
+        <button type="button" class="btn btn-secondary" *ngIf="following">
+            Te sigue
+        </button>
 
-  <app-sidebar></app-sidebar>
+        <!--CARD-BODY-->
+        <div class="card-body">
+            <button type="button" class="btn btn-outline-success">
+                <i class="fas fa-redo-alt"></i>
+                <span class="verde"> {{ stats.following }}</span>
+            </button>
+
+            <button type="button" class="btn btn-outline-danger">
+                <i class="fas fa-undo-alt"></i>
+                <span class="rojo"> {{ stats.followed }}</span>
+            </button>
+        </div>
+    </div>
+
+    <!--SEGUIMIENTO-->
+    <div class="seguimiento">
+
+        <button class="btn btn-success" *ngIf="!following" (click)="followUser(user._id)">
+            Seguir
+        </button>
+
+        <button class="btn btn-danger" *ngIf="following" (click)="unFollowUser(user._id)">
+            No seguir
+        </button>
+
+    </div>
 
 </div>

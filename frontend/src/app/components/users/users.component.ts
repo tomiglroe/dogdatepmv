@@ -36,7 +36,7 @@ export class UsersComponent implements OnInit, DoCheck {
     private _followService: FollowService
   ) {
 
-    this.title = 'Perros';
+    this.title = 'Listado de Perros';
     this.url = GLOBAL.url;
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -47,10 +47,7 @@ export class UsersComponent implements OnInit, DoCheck {
     this.actualPage();
   }
 
-  ngDoCheck() {
-
-  //  this.identity = this._userService.getIdentity();
-  }
+  ngDoCheck() {}
 
   actualPage() {
 

@@ -1,28 +1,30 @@
-.list-group-item {
-  margin-bottom: 1rem;
+.profile-follow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.image-user {
-  display: inline;
-  margin-right: 10px;
-  width: 75px;
-  height: 75px;
-  border-radius: 100px;
-  overflow: hidden;
-}
-
-.image-user img {
-  width: 120px;
-}
-
-.pull-right {
-  display: inline;
-  text-align: right;
+.img-name {
+  display: flex;
+  flex-direction: column;
 }
 
 .ficha {
-  display: flex;
-  flex-direction: row;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+
+.image-user {
+  padding: 2rem;
+  margin: 0 auto 0 auto;
+  border-radius: 100px;
+}
+
+.image-user img {
+  width: 50%;
 }
 
 .dogname {
@@ -31,13 +33,10 @@
   font-size: 2rem;
 }
 
-.user-perro {
-  width: 100%;
-}
-
 button {
   margin-left: 2rem;
   margin-right: 2rem;
+  margin-top: 2rem;
 }
 
 button a {
@@ -45,13 +44,4 @@ button a {
   color: goldenrod;
   font-weight: bold;
   text-decoration: none;
-}
-
-.people {
-  display: flex;
-}
-
-.perros {
-  display: flex;
-  flex-wrap: wrap;
 }

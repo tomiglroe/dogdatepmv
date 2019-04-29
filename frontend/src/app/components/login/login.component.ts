@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private _userService: UserService
   ) {
 
-    this.title = 'Identifícate';
+    this.title = 'Accede a Dogdate';
     this.user = new User(
       "",
       "",

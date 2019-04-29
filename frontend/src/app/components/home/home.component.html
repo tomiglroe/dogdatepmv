@@ -1,11 +1,10 @@
 <div class="container">
-  <header class="col-md-12">
+  <header class="col-md-12" class="jumbotron">
 
-    <section class="jumbotron">
       <h1>{{title}}</h1>
-      <p>Localiza a los amigos peludos de tu perro para saber si están paseando por tu zona</p>
+      <p>Red social canina</p>
 
-      <div class="container" *ngIf="identity">
+      <div class="col-md-12" class="container" *ngIf="identity">
         <p class="buttons">
           <button [routerLink]="['/perfil', identity._id]" class="btn btn-outline-primary">
             Perfil
@@ -19,10 +18,10 @@
         </p>
       </div>
 
-      <div class='imageHome' *ngIf="!identity">
-        <img src="../../../assets/images/cover_dogdate.png" alt="dogdate">
+      <div *ngIf="!identity">
+        <img class='imageHome' src="../../../assets/images/cover_dogdate.png" alt="dogdate">
       </div>
-    </section>
+
   </header>
 
   <body class="col-md-12" *ngIf="identity">
@@ -31,3 +30,4 @@
     </h2>
     <img class='imageHomeLogin' src="../../../assets/images/perros-portada-geo.png" alt="Geolocaliza otros perros">
   </body>
+</div>

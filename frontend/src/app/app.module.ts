@@ -13,10 +13,10 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersComponent } from './components/users/users.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 import { UserService } from './services/user.service';
 import { UserGuard } from './services/user.guard';
-import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+
 const follow = require('../controllers/follows/follow');
 const unFollow = require('../controllers/follows/unFollow');
 const getFollowingUsers = require('../controllers/follows/getFollowingUsers');

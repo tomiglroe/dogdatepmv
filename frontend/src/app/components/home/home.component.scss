@@ -1,23 +1,22 @@
-// div.container {
-//     margin-left: auto;
-//     margin-right: auto;
-// }
-
-section {
+header {
     margin-top: 10px;
     text-align: center;
 }
 
+.buttons {
+    display: flex;
+}
+
 button {
-    padding: 5px;
-    margin-right: 20px;
-    width: 20%;
+    padding: 10px;
+    margin: 0 auto;
+    width: 30%;
 }
 
 img.imageHome {
-    width: 60%;
-    border-radius: 90px;
-    height: 70%;
+    width: 100%;
+    border-radius: 100%;
+
 }
 
 img.imageHomeLogin {
