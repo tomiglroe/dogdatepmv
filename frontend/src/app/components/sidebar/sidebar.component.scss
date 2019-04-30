@@ -22,3 +22,22 @@ width: 30%;
 a {
   font-weight: bold;
 }
+
+.card-body {
+  display: flex;
+  align-items: space-around;
+}
+
+.btn-outline-danger {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.btn-secondary {
+  font-size: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-justify: auto;
+  width: 30%;
+  height: 70%;
+}

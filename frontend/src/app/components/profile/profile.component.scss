@@ -20,8 +20,14 @@ img {
   overflow: hidden;
 }
 
-.btn-outline-success {
-  margin-right: 1.5rem;
+.card-body {
+  display: flex;
+  align-items: space-around;
+}
+
+.btn-outline-danger {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .btn-secondary {

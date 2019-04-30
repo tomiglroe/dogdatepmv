@@ -1,6 +1,8 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { UploadService } from '../../services/upload.service';
 import { GLOBAL } from '../../services/global';
+import { Publication } from '../../models/publication';
 
 
 
@@ -8,7 +10,7 @@ import { GLOBAL } from '../../services/global';
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  providers: [UserService]
+  providers: [UserService, UploadService]
 })
 
 export class SidebarComponent implements OnInit, DoCheck {
@@ -17,6 +19,7 @@ export class SidebarComponent implements OnInit, DoCheck {
   token;
   stats;
   url;
+  publication: Publication;
   status;
 
   constructor(
@@ -28,14 +31,26 @@ export class SidebarComponent implements OnInit, DoCheck {
     this.token = this._userService.getToken();
     this.stats = this._userService.getStats();
     this.url = GLOBAL.url;
+    this.publication = new Publication (
+      "",
+      "",
+      "",
+      "",
+      this.identity._id
+    );
   }
 
   ngOnInit() {
-
-    console.log('sidebarcomponent ha sido cargado');
+    console.log(this.publication);
     
   }
 
   ngDoCheck() {}
+
+  onSubmit() {
+
+    console.log(this.publication);
+    
+  }
 
 }

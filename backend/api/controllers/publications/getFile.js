@@ -6,7 +6,7 @@ const path = require('path');
 function getImageFile(req, res) {
 
   const image_file = req.params.imageFile;
-  const path_file = './uploads/users/' + image_file;
+  const path_file = './uploads/publications/' + image_file;
 
   fs.exists(path_file, (exists) => {
 
@@ -16,7 +16,7 @@ function getImageFile(req, res) {
 
     } else {
 
-      res.status(200).send({ message: 'No existe avatar' });
+      res.status(200).send({ message: 'No existe fichero' });
     }
   });
 }

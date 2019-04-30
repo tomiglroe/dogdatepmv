@@ -19,27 +19,35 @@
         <div class="card-body">
             <button type="button" class="btn btn-outline-success">
                 <i class="fas fa-redo-alt"></i>
-                <span class="verde"> {{ stats.following }}</span>
+                <span> {{ stats.following }}</span>
             </button>
 
             <button type="button" class="btn btn-outline-danger">
                 <i class="fas fa-undo-alt"></i>
-                <span class="rojo"> {{ stats.followed }}</span>
+                <span> {{ stats.followed }}</span>
             </button>
+
+            <button type="button" class="btn btn-outline-primary">
+                <i class="far fa-edit"></i>
+                <span> {{ stats.publication }}</span>
+              </button>
         </div>
     </div>
 
+    
     <!--SEGUIMIENTO-->
-    <div class="seguimiento">
-
+    <div class="seguimiento" *ngIf="user._id != identity._id">
+        
         <button class="btn btn-success" *ngIf="!following" (click)="followUser(user._id)">
             Seguir
         </button>
-
+        
         <button class="btn btn-danger" *ngIf="following" (click)="unFollowUser(user._id)">
             No seguir
         </button>
-
+        
     </div>
-
+    
 </div>
+
+    <app-sidebar></app-sidebar>

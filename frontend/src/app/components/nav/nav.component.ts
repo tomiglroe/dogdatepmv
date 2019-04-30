@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Route, ActivatedRoute, Params, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { GLOBAL } from '../../services/global';
 
 @Component({
   selector: 'app-nav',
@@ -11,8 +12,9 @@ import { UserService } from '../../services/user.service';
 })
 export class NavComponent implements OnInit, DoCheck {
 
-  public title = 'DogDate';
-  public identity;
+  title = 'DogDate';
+  identity;
+  url: string;
 
   constructor (
 
@@ -20,7 +22,10 @@ export class NavComponent implements OnInit, DoCheck {
     private _router: Router,
     private _route: ActivatedRoute
 
-  ) {}
+  ) {
+
+    this.url = GLOBAL.url;
+  }
 
   ngOnInit() {
 
