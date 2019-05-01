@@ -29,12 +29,12 @@
       </span>
     </p>
 
-    <div class="user-image-for-edit" *ngIf="user.image">
-      <img src="{{ url + 'get-image-user/' + user.image }}" />
+    <div *ngIf="user.image">
+      <img class="user-image-for-edit" src="{{ url + 'get-image-user/' + user.image }}" />
     </div>
 
     <p>
-      <label>Sube tu avatar&nbsp;</label>
+      <label class="avatar">Sube tu avatar&nbsp;</label>
       <input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)" />
     </p>
 

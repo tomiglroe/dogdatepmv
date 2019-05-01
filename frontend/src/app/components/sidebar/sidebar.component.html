@@ -25,7 +25,7 @@
 </div> -->
 
 <!--Formulario de publicación-->
-<div id="new-publication" class="card" style="width: 12rem;" class="col-lg-4 pull-left panel panel-default">
+<div id="new-publication" class="card">
 	
 	<div class="alert alert-success" *ngIf="status == 'success'">
 		Publicación enviada correctamente
@@ -36,7 +36,7 @@
 
 	<form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm, $event);" class="col-lg-10">
 		<p>
-			<label>¿Que estas pensando hoy?</label>
+			<label>Escribe una nueva publicación:</label>
 			<textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>
 			<span *ngIf="!text.valid && text.touched">
 				El texto de la publicación es obligatorio
@@ -44,10 +44,10 @@
 		</p>
 
 		<p>
-			<label>Sube una imagen</label>
+			<label class="subir">Sube una imagen: &nbsp;</label>
 			<input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)"/>
 		</p>
 
-		<input type="submit" value="Enviar" class="btn btn-success" [disabled]="!newPubForm.form.valid" />
+		<input type="submit" value="Enviar" class="btn btn-success btn-block" [disabled]="!newPubForm.form.valid" />
 	</form>
 </div>

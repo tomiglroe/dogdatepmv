@@ -1,7 +1,7 @@
 <h1 class="h1-strong">{{ title }}</h1>
 
 <!--Listado de los usuarios-->
-<div class="flexp">
+<div class="flexbox-container">
 	<div *ngFor="let user of users" class="item-user">
 
 		<ul *ngIf="user._id != identity._id">

@@ -8,8 +8,6 @@ div a img {
 }
 
 div.card-text {
-  display: flex;
-  flex-direction: row;
 }
 
 .card-text a {
@@ -19,5 +17,9 @@ div.card-text {
 #new-publication {
   margin-left: auto;
   margin-right: auto;
- 
+}
+
+.button-flex {
+  display: flex;
+  margin-top: 1rem;
 }

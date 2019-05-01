@@ -36,8 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    console.log('Componente de Login cargado...');
   }
 
   onSubmit() {
@@ -47,9 +45,6 @@ export class LoginComponent implements OnInit {
       response => {
 
         this.identity = response.user;
-
-        console.log(this.identity);
-        
 
         if (!this.identity || !this.identity._id) {
 
@@ -80,9 +75,6 @@ export class LoginComponent implements OnInit {
       response => {
 
         this.token = response.token;
-
-        console.log(this.token);
-        
 
         if (this.token.length <= 0) {
 

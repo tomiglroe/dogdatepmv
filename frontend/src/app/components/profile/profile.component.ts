@@ -70,7 +70,6 @@ export class ProfileComponent implements OnInit, DoCheck {
         if (response.user) {
 
           this.user = response.user;
-          console.log(this.user);
 
           if (response && response.following && response.following._id) {
 

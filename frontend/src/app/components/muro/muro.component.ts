@@ -1,7 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { UploadService } from '../../services/upload.service';
 import { GLOBAL } from '../../services/global';
 import { Publication } from '../../models/publication';
 import { PublicationService } from '../../services/publication.service';
@@ -9,80 +8,86 @@ import * as $ from 'jquery';
 
 
 @Component({
-  selector: 'app-muro',
-  templateUrl: './muro.component.html',
-  styleUrls: ['./muro.component.scss'],
-  providers: [UserService, PublicationService]
+	selector: 'app-muro',
+	templateUrl: './muro.component.html',
+	styleUrls: ['./muro.component.scss'],
+	providers: [UserService, PublicationService]
 })
 
 export class MuroComponent implements OnInit {
 
-  title: string;
-  identity;
-  token;
-  url: string;
-  status: string;
-  page;
-  total;
-  pages;
-  itemsPerPage;
-  publications: Publication[];
-  showImage;
+	title: string;
+	identity;
+	token;
+	url: string;
+	status: string;
+	page;
+	total;
+	pages;
+	itemsPerPage;
+	publications: Publication[];
+	showImage;
 
-  constructor(
+	constructor(
 
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _userService: UserService,
-    private _publicationService: PublicationService
-  ) {
+		private _route: ActivatedRoute,
+		private _router: Router,
+		private _userService: UserService,
+		private _publicationService: PublicationService
+	) {
 
-    this.title = 'Muro';
-    this.identity = this._userService.getIdentity();
-    this.token = this._userService.getToken();
-    this.url = GLOBAL.url;
-    this.page = 1;
+		this.title = 'Muro';
+		this.identity = this._userService.getIdentity();
+		this.token = this._userService.getToken();
+		this.url = GLOBAL.url;
+		this.page = 1;
 	}
-	
-	
-  ngOnInit() {
-		
+
+
+	ngOnInit() {
+
 		this.getPublications(this.page);
-  }
-	
-	ngDoCheck() {
-	
 	}
 
-  getPublications(page, adding = false){
+	ngDoCheck() {
+
+	}
+
+	getPublications(page, adding = false) {
+
 		this._publicationService.getPublications(this.token, page).subscribe(
 			response => {
-				if(response.publications){
+
+				if (response.publications) {
+					
 					this.total = response.total_items;
 					this.pages = response.pages;
 					this.itemsPerPage = response.items_per_page;
 
-					if(!adding){
+					if (!adding) {
+
 						this.publications = response.publications;
-					}else{
+					} else {
+
 						var arrayA = this.publications;
 						var arrayB = response.publications;
 						this.publications = arrayA.concat(arrayB);
 
-						$("html, body").animate({ scrollTop: $('body').prop("scrollHeight")}, 500);
+						$("html, body").animate({ scrollTop: $('body').prop("scrollHeight") }, 500);
 					}
 
-					if(page > this.pages){
+					if (page > this.pages) {
 						//this._router.navigate(['/home']);
 					}
-				}else{
+				} else {
 					this.status = 'error';
 				}
 			},
 			error => {
 				var errorMessage = <any>error;
 				console.log(errorMessage);
-				if(errorMessage != null){
+				
+				if (errorMessage != null) {
 					this.status = 'error';
 				}
 			}
@@ -90,29 +95,29 @@ export class MuroComponent implements OnInit {
 	}
 
 	public noMore = false;
-	viewMore(){
+	viewMore() {
 		this.page += 1;
 
-		if(this.page == this.pages){
+		if (this.page == this.pages) {
 			this.noMore = true;
 		}
 
 		this.getPublications(this.page, true);
 	}
 
-	refresh(event = null){
+	refresh(event = null) {
 		this.getPublications(1);
 	}
 
-	showThisImage(id){
+	showThisImage(id) {
 		this.showImage = id;
 	}
 
-	hideThisImage(id){
+	hideThisImage(id) {
 		this.showImage = 0;
 	}
 
-	deletePublication(id){
+	deletePublication(id) {
 		this._publicationService.deletePublication(this.token, id).subscribe(
 			response => {
 				this.refresh();

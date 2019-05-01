@@ -5,6 +5,7 @@ import { GLOBAL } from '../../services/global';
 import { Publication } from '../../models/publication';
 import { PublicationService } from '../../services/publication.service';
 import { UploadService } from '../../services/upload.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,12 +15,12 @@ import { UploadService } from '../../services/upload.service';
 
 export class SidebarComponent implements OnInit {
 
-  public identity;
-  public token;
-  public stats;
-  public url;
-  public status;
-  public publication: Publication;
+  identity;
+  token;
+  stats;
+  url;
+  status;
+  publication: Publication;
 
   constructor(
 

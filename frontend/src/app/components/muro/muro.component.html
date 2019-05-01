@@ -4,10 +4,10 @@
     {{ title }}
     <button class="btn btn-outline-secondary btn-sm" (click)="refresh($event)">Nuevas publicaciones</button>
   </h1>
+
   <div *ngFor="let publication of publications">
 
     <!--Cards con publicaciones-->
-
     <div class="card sm-3" style="width: 100%;">
       <div class="row no-gutters">
 
@@ -23,16 +23,17 @@
 
             <div class="card-title">
               <a [routerLink]="['/perfil',publication.user._id]" class="user-name">
-                <h5>{{ publication.user.dogname.toUpperCase() }}</h5>
+                <h4>{{ publication.user.dogname.toUpperCase() }}</h4>
               </a>
             </div>
 
-            <h4 class="card-text">
+            <h5 class="card-text">
               {{ publication.text }}
 
-            </h4>
+            </h5>
 
-
+            <div class="button-flex">
+            <!--Solo puedo eliminar mis publicaciones-->
             <div class="card-text" *ngIf="publication.user._id == identity._id">
               <!-- Botón para eliminar publicaciones -->
               <a href="#myModal{{publication._id}}" role="button" class="btn btn-outline-large btn-outline-danger"
@@ -40,9 +41,7 @@
                 <i class="fas fa-trash-alt"></i>
               </a>
 
-
-
-              <!-- Modal de Bootstrap HTML -->
+              <!--Modal de Bootstrap HTML para el botón de eliminar publicaciones-->
               <div id="myModal{{publication._id}}" class="modal fade">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -66,38 +65,30 @@
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!--Botón para desplegar la imagen si se ha subido una a la publicación-->
-              <div *ngIf="publication.user._id == identity._id">
-                <div class="pull-right" *ngIf="publication.file != 'null' ">
-                  <button class="btn btn-outline-primary pull-right" (click)="showThisImage(publication._id)"
-                    *ngIf="showImage != publication._id">
-                    <i class="far fa-image"></i>
-                  </button>
-                  <button class="btn btn-outline-danger pull-right" (click)="hideThisImage(publication._id)"
-                    *ngIf="showImage == publication._id">
-                    <i class="fas fa-minus-circle"></i>
-                  </button>
-                </div>
-              </div>
+            <!--Botón para desplegar la imagen si se ha subido una a la publicación-->
 
-
-
+            <div class="pull-right" *ngIf="publication.file != 'null' ">
+              <button class="btn btn-outline-primary pull-right" (click)="showThisImage(publication._id)"
+                *ngIf="showImage != publication._id">
+                <i class="far fa-image"></i>
+              </button>
+              <button class="btn btn-outline-danger pull-right" (click)="hideThisImage(publication._id)"
+                *ngIf="showImage == publication._id">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </div>
             </div>
           </div>
+          <!--Consigo más publicaciones si las hay-->
+          <div class="col-lg-12" *ngIf="publication.file != 'null' && showImage == publication._id">
+            <br />
+            <img src="{{ url + 'get-image-pub/' + publication.file}}" class="col-lg-12" />
+          </div>
         </div>
-
-
       </div>
     </div>
-
-
-    <!--Consigo más publicaciones si las hay-->
-    <div class="col-lg-12" *ngIf="publication.file != 'null' && showImage == publication._id">
-      <br />
-      <img src="{{ url + 'get-image-pub/' + publication.file}}" class="col-lg-12" />
-    </div>
-
   </div>
   <div class="col-lg-12 text-center" *ngIf="publications && publications.length">
     <p>
@@ -107,5 +98,3 @@
     </p>
   </div>
 </div>
-
-
