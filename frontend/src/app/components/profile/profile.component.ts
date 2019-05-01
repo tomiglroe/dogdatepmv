@@ -48,7 +48,6 @@ export class ProfileComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-
   }
 
   loadPage() {

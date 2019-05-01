@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MuroComponent } from './components/muro/muro.component';
 
 import { UserGuard } from './services/user.guard';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'perros', component: UsersComponent, canActivate: [UserGuard]},
   {path: 'perros/:page', component: UsersComponent, canActivate: [UserGuard]},
   {path: 'perfil/:id', component: ProfileComponent, canActivate: [UserGuard]},
+  {path: 'muro', component: MuroComponent, canActivate: [UserGuard]},
   {path: '**', component: HomeComponent}
 ];
 

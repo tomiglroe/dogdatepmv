@@ -1,4 +1,4 @@
-<div class="card" style="width: 12rem;">
+<!-- <div class="card" style="max-width: 50%;">
   <img class="card-img-top" src="{{ url + 'get-image-user/' + identity.image }}" *ngIf="identity.image"
     alt="Foto de perfil">
   <img class="card-img-top" src="assets/images/user-perro.png" *ngIf="!identity.image" alt="Foto de perfil">
@@ -22,7 +22,7 @@
         <span> {{ stats.publication }}</span>
       </button>
 </div>
-</div>
+</div> -->
 
 <!--Formulario de publicación-->
 <div id="new-publication" class="card" style="width: 12rem;" class="col-lg-4 pull-left panel panel-default">
@@ -39,7 +39,7 @@
 			<label>¿Que estas pensando hoy?</label>
 			<textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>
 			<span *ngIf="!text.valid && text.touched">
-				El texto de la publicación es obliatorio
+				El texto de la publicación es obligatorio
 			</span>
 		</p>
 

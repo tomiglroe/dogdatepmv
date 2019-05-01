@@ -1,5 +1,5 @@
 .navbar-expand-sm {
-    min-width: 344px;
+    width: 100%;
 }
 
 
@@ -20,4 +20,15 @@ img {
     margin-top: 10px;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+.btn-outline-secondary {
+    margin-left: 3rem;
+    width: 10rem;
+}
+
+.btn-outline-secondary a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
 }

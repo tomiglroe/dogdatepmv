@@ -15,7 +15,7 @@ function getUsers(req, res) {
         page = req.params.page;
     }
 
-    let itemsPerPage = 5;
+    let itemsPerPage = 10;
 
     User.find().sort('_id').paginate(page, itemsPerPage, (err, users, total) => {
 

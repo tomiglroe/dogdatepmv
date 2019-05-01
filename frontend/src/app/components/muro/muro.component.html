@@ -1,0 +1,111 @@
+<!--Título y botón de refresco-->
+<div class="col-lg-12">
+  <h1 class="h1-strong">
+    {{ title }}
+    <button class="btn btn-outline-secondary btn-sm" (click)="refresh($event)">Nuevas publicaciones</button>
+  </h1>
+  <div *ngFor="let publication of publications">
+
+    <!--Cards con publicaciones-->
+
+    <div class="card sm-3" style="width: 100%;">
+      <div class="row no-gutters">
+
+        <div class="col-md-4">
+          <a routerLink='/perfil/user._id'>
+            <img src="{{ url +'get-image-user/' + publication.user.image }}" *ngIf="publication.user.image" />
+            <img src="assets/images/user-perro.png" class="avatar-default" *ngIf="!publication.user.image" />
+          </a>
+        </div>
+
+        <div class="col-md-8">
+          <div class="card-body">
+
+            <div class="card-title">
+              <a [routerLink]="['/perfil',publication.user._id]" class="user-name">
+                <h5>{{ publication.user.dogname.toUpperCase() }}</h5>
+              </a>
+            </div>
+
+            <h4 class="card-text">
+              {{ publication.text }}
+
+            </h4>
+
+
+            <div class="card-text" *ngIf="publication.user._id == identity._id">
+              <!-- Botón para eliminar publicaciones -->
+              <a href="#myModal{{publication._id}}" role="button" class="btn btn-outline-large btn-outline-danger"
+                data-toggle="modal" *ngIf="showImage != publication._id">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+
+
+
+              <!-- Modal de Bootstrap HTML -->
+              <div id="myModal{{publication._id}}" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">
+                        ¿Seguro que quieres eliminar la publicación?
+                      </h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Si la borras no podrás recuperarla</p>
+                      <p>{{publication.text}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-default" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-outline-primary" (click)="deletePublication(publication._id)"
+                        data-dismiss="modal">
+                        Borrar la publicación
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Botón para desplegar la imagen si se ha subido una a la publicación-->
+              <div *ngIf="publication.user._id == identity._id">
+                <div class="pull-right" *ngIf="publication.file != 'null' ">
+                  <button class="btn btn-outline-primary pull-right" (click)="showThisImage(publication._id)"
+                    *ngIf="showImage != publication._id">
+                    <i class="far fa-image"></i>
+                  </button>
+                  <button class="btn btn-outline-danger pull-right" (click)="hideThisImage(publication._id)"
+                    *ngIf="showImage == publication._id">
+                    <i class="fas fa-minus-circle"></i>
+                  </button>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <!--Consigo más publicaciones si las hay-->
+    <div class="col-lg-12" *ngIf="publication.file != 'null' && showImage == publication._id">
+      <br />
+      <img src="{{ url + 'get-image-pub/' + publication.file}}" class="col-lg-12" />
+    </div>
+
+  </div>
+  <div class="col-lg-12 text-center" *ngIf="publications && publications.length">
+    <p>
+      <button class="btn btn-outline-success" (click)="viewMore()" *ngIf="!noMore">
+        Ver más publicaciones
+      </button>
+    </p>
+  </div>
+</div>
+
+

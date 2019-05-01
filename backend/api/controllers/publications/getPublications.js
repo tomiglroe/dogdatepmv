@@ -12,7 +12,7 @@ function getPublications(req, res) {
     page = req.params.page;
   }
 
-  let itemsPerPage = 5;
+  let itemsPerPage = 10;
 
   //Busco todos los usuarios que sigo y creo un array de objetos con ellos
   Follow.find({ user: req.user.sub }).populate('followed').exec((err, follows) => {

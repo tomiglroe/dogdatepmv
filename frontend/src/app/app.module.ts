@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { UserService } from './services/user.service';
 import { UserGuard } from './services/user.guard';
+import { MuroComponent } from './components/muro/muro.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserGuard } from './services/user.guard';
     UsersComponent,
     SidebarComponent,
     ProfileComponent,
-    FooterComponent
+    FooterComponent,
+    MuroComponent
   ],
   imports: [
     BrowserModule,

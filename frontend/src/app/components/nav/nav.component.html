@@ -18,10 +18,13 @@
                 <a class="nav-link" routerLink='home' routerLinkActive='active'>Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Muro</a>
+                <a class="nav-link" routerLink='/muro' routerLinkActive='active'>Muro</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink='/perros' routerLinkActive='active'>Perros</a>
+            </li>
+            <li class="btn btn-outline-secondary">
+                <a [routerLink]="['/perfil', identity._id]">Publicar</a>
             </li>
         </ul>
 
