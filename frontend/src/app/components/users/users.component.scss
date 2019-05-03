@@ -8,7 +8,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-style: groove;
+  border-style: outset;
+  border-color: lightgray;
+  border-radius: 20px 50px;
 }
 
 .image-header {
