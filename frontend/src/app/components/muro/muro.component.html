@@ -27,6 +27,11 @@
               </a>
             </div>
 
+            <!--Muestro fecha de librería moment-->
+            <div class="date">
+              {{ (publication.created_at | amFromUnix) | amLocale: 'es' | amTimeAgo }}
+            </div>
+
             <h5 class="card-text">
               {{ publication.text }}
 
