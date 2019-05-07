@@ -14,3 +14,5 @@ Pasos a seguir para probar el proyecto:
 
 Debéis tener en cuenta que al usar la base de datos de Mongo esta se genera sola. Por lo que al principio no habrá usuarios y si visitáis la pestaña "Perros" no os saldrá ninguno hasta que haya por lo menos dos registrados. Ya que esa pestaña muestra solo los demás perros y no al perro logado.
 
+También a tener en cuenta que no se mostrarán publicaciones hasta que sigas a algn usuario, ya que solo se muestran las publicaciones propias y las de usuarios que sigues.
+
