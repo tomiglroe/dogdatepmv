@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { Route, ActivatedRoute, Params, Router } from '@angular/router';
+import { Route, ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { GLOBAL } from '../../services/global';
 
@@ -19,8 +19,7 @@ export class NavComponent implements OnInit, DoCheck {
   constructor (
 
     private _userService: UserService,
-    private _router: Router,
-    private _route: ActivatedRoute
+    private _router: Router
 
   ) {
 

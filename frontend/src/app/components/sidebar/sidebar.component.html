@@ -34,7 +34,7 @@
 		Publicación no enviada 
 	</div>
 
-	<form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm, $event);" class="col-lg-10">
+	<form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm, $event);" class="col-lg-12">
 		<p>
 			<label>Escribe una nueva publicación:</label>
 			<textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>

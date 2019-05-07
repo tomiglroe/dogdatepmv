@@ -1,11 +1,10 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user';
 import { Follow } from '../../models/follow';
 import { UserService } from '../../services/user.service';
 import { FollowService } from '../../services/follow.service';
 import { GLOBAL } from '../../services/global';
-import { UsersComponent } from '../users/users.component';
 
 @Component({
   selector: 'app-profile',
@@ -37,6 +36,7 @@ export class ProfileComponent implements OnInit, DoCheck {
     this.title = 'Perfil de:';
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.stats = this._userService.getStats();
     this.url = GLOBAL.url;
     this.following = false;
     this.followed = false;
@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
+
   }
 
   loadPage() {

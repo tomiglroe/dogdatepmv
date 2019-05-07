@@ -4,53 +4,56 @@
     </h1>
 </header>
 
-    <!--DATA PROFILE-->
-    <div class="col-lg-12" id="data-profile" *ngIf="user">
+<!--DATA PROFILE-->
+<div class="col-lg-12" id="data-profile" *ngIf="user">
 
-        <div class="col-lg-6 avatar">
-            <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" />
-            <img src="assets/images/user-perro.png" *ngIf="!user.image" />
+    <div class="col-lg-6 avatar">
+        <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" />
+        <img src="assets/images/user-perro.png" *ngIf="!user.image" />
 
-            <button type="button" class="btn btn-secondary btn-sm" *ngIf="following && user._id != identity._id">
-                Lo sigues
+        <button type="button" class="btn btn-secondary btn-sm" *ngIf="following && user._id != identity._id">
+            Lo sigues
+        </button>
+
+        <!--CARD-BODY-->
+        <div class="card-body">
+            <button type="button" class="btn btn-outline-success">
+                <i class="fas fa-redo-alt"></i>
+                <span> {{ stats.following }}</span>
             </button>
 
-            <!--CARD-BODY-->
-            <div class="card-body">
-                <button type="button" class="btn btn-outline-success">
-                    <i class="fas fa-redo-alt"></i>
-                   <span> {{ stats.following }}</span>
-                </button>
+            <button type="button" class="btn btn-outline-danger">
+                <i class="fas fa-undo-alt"></i>
+                <span> {{ stats.followed }}</span>
+            </button>
 
-                <button type="button" class="btn btn-outline-danger">
-                    <i class="fas fa-undo-alt"></i>
-                    <span> {{ stats.followed }}</span>
-                </button>
-
-                <button type="button" class="btn btn-outline-primary">
-                    <i class="far fa-edit"></i>
-                    <span> {{ stats.publication }}</span>
-                </button>
-            </div>
+            <button type="button" class="btn btn-outline-primary">
+                <i class="far fa-edit"></i>
+                <span> {{ stats.publication }}</span>
+            </button>
         </div>
+    </div>
 
 
-        <!--SEGUIMIENTO-->
-        <div class="seguimiento" *ngIf="user._id != identity._id">
+    <!--SEGUIMIENTO-->
+    <div class="seguimiento" *ngIf="user._id != identity._id">
 
-            <button class="btn btn-success" *ngIf="!following" (click)="followUser(user._id)">
-                Seguir
-            </button>
+        <button class="btn btn-success" *ngIf="!following" (click)="followUser(user._id)">
+            Seguir
+        </button>
 
-            <button class="btn btn-danger" *ngIf="following" (click)="unFollowUser(user._id)">
-                No seguir
-            </button>
-
-        </div>
+        <button class="btn btn-danger" *ngIf="following" (click)="unFollowUser(user._id)">
+            No seguir
+        </button>
 
     </div>
 
-    <!--Formulario de publicación-->
+</div>
 
+<!--Formulario de publicación
+
+<div *ngIf="user._id == identity._id">
     <app-sidebar>
     </app-sidebar>
+</div>
+-->
