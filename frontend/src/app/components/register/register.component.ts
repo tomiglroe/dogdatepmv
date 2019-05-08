@@ -32,10 +32,7 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-  ngOnInit() {
-
-    console.log('Componente de Registro cargado...');
-  }
+  ngOnInit() {}
 
   onSubmit(form) {
 
