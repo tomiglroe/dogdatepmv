@@ -1,5 +1,5 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
 import { Follow } from '../../models/follow';
 import { UserService } from '../../services/user.service';
@@ -13,7 +13,7 @@ import { GLOBAL } from '../../services/global';
   providers: [UserService, FollowService]
 
 })
-export class ProfileComponent implements OnInit, DoCheck {
+export class ProfileComponent implements OnInit {
 
   title: string;
   user: User;
@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit, DoCheck {
     private _router: Router,
     private _userService: UserService,
     private _followService: FollowService
-  ) {
+  ) { 
 
     this.title = 'Perfil de:';
     this.identity = this._userService.getIdentity();
@@ -45,10 +45,6 @@ export class ProfileComponent implements OnInit, DoCheck {
   ngOnInit() {
 
     this.loadPage();
-  }
-
-  ngDoCheck() {
-
   }
 
   loadPage() {

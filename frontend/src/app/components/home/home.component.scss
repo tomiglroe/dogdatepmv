@@ -1,5 +1,4 @@
 header {
-    margin-top: 10px;
     text-align: center;
 }
 
@@ -14,7 +13,7 @@ button {
 }
 
 img.imageHome {
-    width: 60%;
+    width: 50%;
     border-radius: 100%;
 
 }
@@ -25,4 +24,8 @@ img.imageHomeLogin {
 
 h2 {
     text-align: center;
+}
+
+.jumbotron {
+    background-color: white;
 }
